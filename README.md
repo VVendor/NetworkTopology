@@ -5,4 +5,5 @@
 - cmake ..
 - make
 ### Now you can run main_app or test_topology (./main_app or ./test_topology from build folder)
-Complexity ~ O(N² · N! * (N-1)!), where N is the number of devices.
+Time complexity ~ O(N² · N! * (N-1)!), where N is the number of devices.
+Memory complexity  ~ O(N), where N is the number of devices.
