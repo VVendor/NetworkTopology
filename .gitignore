@@ -1,3 +1,7 @@
+# Created by https://www.toptal.com/developers/gitignore/api/cmake,c++,linux,visualstudiocode
+# Edit at https://www.toptal.com/developers/gitignore?templates=cmake,c++,linux,visualstudiocode
+
+### C++ ###
 # Prerequisites
 *.d
 
@@ -11,18 +15,10 @@
 *.gch
 *.pch
 
-# Linker files
-*.ilk
-
-# Debugger Files
-*.pdb
-
 # Compiled Dynamic libraries
 *.so
 *.dylib
 *.dll
-*.so.*
-
 
 # Fortran module files
 *.mod
@@ -39,31 +35,59 @@
 *.out
 *.app
 
-# Build directories
-build/
-Build/
-build-*/
-
-# CMake generated files
-CMakeFiles/
+### CMake ###
+CMakeLists.txt.user
 CMakeCache.txt
-cmake_install.cmake
+CMakeFiles
+CMakeScripts
+Testing
 Makefile
+cmake_install.cmake
 install_manifest.txt
 compile_commands.json
+CTestTestfile.cmake
+_deps
 
-# Temporary files
-*.tmp
-*.log
-*.bak
-*.swp
+### CMake Patch ###
+CMakeUserPresets.json
 
-# vcpkg
-vcpkg_installed/
+# External projects
+*-prefix/
 
-# debug information files
-*.dwo
+### Linux ###
+*~
 
-# test output & cache
-Testing/
-.cache/
+# temporary files which can be created if a process still has a handle open of a deleted file
+.fuse_hidden*
+
+# KDE directory preferences
+.directory
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+# .nfs files are created when an open file is removed but is still being accessed
+.nfs*
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+build/*
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+.ionide
+
+# End of https://www.toptal.com/developers/gitignore/api/cmake,c++,linux,visualstudiocode
