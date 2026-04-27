@@ -6,7 +6,7 @@
 class NetworkTopology
 {
 public:
-    NetworkTopology(int device_count, const std::vector<std::vector<int>> ports);
+    NetworkTopology(int device_count, const std::vector<std::vector<int>> &ports);
 
     bool solve();
 
@@ -31,7 +31,7 @@ private:
     std::vector<std::tuple<int, int, int, int>> _solution_edges;
 
     bool compatibleDevices(int dev1, int p1, int dev2, int p2) const;
-    bool checkDevicesFeasibility(const std::vector<std::tuple<int, int, int, int>> &conns) const;
+    bool checkDevicesFeasibility(const std::vector<std::tuple<int, int, int, int>> &connectionss) const;
     bool checkDevicesConnectivity(const std::vector<std::pair<int, int>> &edges) const;
     bool backtrack(int idx, std::vector<int> &match_to, std::vector<bool> &used_port, int free_port_idx);
     bool checkInputData();

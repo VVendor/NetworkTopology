@@ -3,9 +3,9 @@
 #include <functional>
 #include <numeric>
 
-NetworkTopology::NetworkTopology(int device_count, const std::vector<std::vector<int>> ports) : _device_count(device_count),
-                                                                                                _open_ports_count(0), _free_dev(0), _free_port_num(0),
-                                                                                                _ports(ports)
+NetworkTopology::NetworkTopology(int device_count, const std::vector<std::vector<int>> &ports) : _device_count(device_count),
+                                                                                                 _open_ports_count(0), _free_dev(0), _free_port_num(0),
+                                                                                                 _ports(ports)
 {
 }
 
@@ -43,32 +43,32 @@ bool NetworkTopology::checkDevicesFeasibility(const std::vector<std::tuple<int, 
 {
     std::vector<std::vector<int>> eq_x(_device_count), eq_y(_device_count);
     std::vector<std::pair<int, int>> lt_x, lt_y;
-    for (auto &connection : connections)
+    for (const auto &connection : connections)
     {
         int d1 = std::get<0>(connection), p1 = std::get<1>(connection), d2 = std::get<2>(connection), p2 = std::get<3>(connection);
         if (p1 == static_cast<int>(Port::LEFT) && p2 == static_cast<int>(Port::RIGHT))
         {
             lt_x.emplace_back(d1, d2);
-            eq_y[d1].push_back(d2);
-            eq_y[d2].push_back(d1);
+            eq_y[d1].emplace_back(d2);
+            eq_y[d2].emplace_back(d1);
         }
         else if (p1 == static_cast<int>(Port::RIGHT) && p2 == static_cast<int>(Port::LEFT))
         {
             lt_x.emplace_back(d2, d1);
-            eq_y[d1].push_back(d2);
-            eq_y[d2].push_back(d1);
+            eq_y[d1].emplace_back(d2);
+            eq_y[d2].emplace_back(d1);
         }
         else if (p1 == static_cast<int>(Port::TOP) && p2 == static_cast<int>(Port::BOTTOM))
         {
             lt_y.emplace_back(d2, d1);
-            eq_x[d1].push_back(d2);
-            eq_x[d2].push_back(d1);
+            eq_x[d1].emplace_back(d2);
+            eq_x[d2].emplace_back(d1);
         }
         else if (p1 == static_cast<int>(Port::BOTTOM) && p2 == static_cast<int>(Port::TOP))
         {
             lt_y.emplace_back(d1, d2);
-            eq_x[d1].push_back(d2);
-            eq_x[d2].push_back(d1);
+            eq_x[d1].emplace_back(d2);
+            eq_x[d2].emplace_back(d1);
         }
     }
 
@@ -203,8 +203,8 @@ bool NetworkTopology::checkDevicesConnectivity(const std::vector<std::pair<int, 
     for (const auto &e : edges)
     {
         int u = e.first, v = e.second;
-        adj[u].push_back(v);
-        adj[v].push_back(u);
+        adj[u].emplace_back(v);
+        adj[v].emplace_back(u);
     }
 
     std::vector<bool> vis(_device_count, false);
